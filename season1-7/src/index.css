@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding:0;
   box-sizing: border-box;
@@ -6,8 +6,41 @@
 body{
   padding:1rem;
 }
-.spceBetween{
+.spaceBetween{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.flex{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.lightText{
+  font-size: small;
+  color:gray;
+}
+.lightestText{
+  font-size: smaller;
+  color:gainsboro;
+}
+.badge{
+  padding: 1px 8px ;
+  border-radius: 15%;
+}
+.badge_main{
+  background-color: lightgray;
+  color: gray;
+}
+.badge_danger{
+  background-color: rosybrown;
+  color: red;
+}
+.badge_success{
+  background-color: lightgreen;
+  color: green;
+}
+.badge_info{
+  background-color: lightskyblue;
+  color: blue;
 }

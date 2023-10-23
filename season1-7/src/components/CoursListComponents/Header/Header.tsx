@@ -3,8 +3,8 @@ import "./header.css";
 
 function Header() {
   return (
-    <div>
-        <h1>course title</h1>
+    <div className="Header_container">
+        <h1 className="Header_header">course title</h1>
         <ul className="filterList">
     {filter.map((item:string)=>{
         return <li key={item}>{item}</li>

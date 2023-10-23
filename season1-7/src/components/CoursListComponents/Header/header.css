@@ -6,3 +6,12 @@
   .filterList li{
     list-style-type: none;
   }
+  .Header_container{
+    margin-bottom: 1rem;
+  }
+  .Header_header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
