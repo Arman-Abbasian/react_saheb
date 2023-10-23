@@ -1,0 +1,8 @@
+.filterList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filterList li{
+    list-style-type: none;
+  }
