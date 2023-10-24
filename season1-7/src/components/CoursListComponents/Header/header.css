@@ -8,10 +8,16 @@
   }
   .Header_container{
     margin-bottom: 1rem;
+    width: 50%;
   }
   .Header_header{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+  }
+  @media screen and (min-width: 768px) {
+    .Header_container {
+        width: 50%;;
+    }
   }

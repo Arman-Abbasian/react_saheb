@@ -45,8 +45,11 @@ function CourseDetail({badges,condition,date,score,text,title}:Omit<ICourse,"id"
                 
             </div>
             <div className="courseDetail_footer spaceBetween">
-                <p className="courseDetail_footer_date lightText">{date}</p>
-                <span className="badge ">{condition}</span>
+                <p className="courseDetail_footer_date lightText">{new Date(date).toLocaleDateString("en-US")}</p>
+                <span className={`badge 
+                ${condition==="Active"?"badge_success":
+                condition==="Upcoming"?"badge_danger":"badge_info"}`} >
+                    {condition}</span>
             </div>
         </div>
     )
