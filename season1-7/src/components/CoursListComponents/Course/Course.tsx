@@ -21,20 +21,21 @@ interface ICourseImageProps{
 function CourseImage({image,title}:ICourseImageProps){
     return(
         <div className="courseImage">
-            <img style={{maxWidth:"100%",borderRadius:"10px",}} src={image} alt={title} />
+            <img src={image} alt={title} />
         </div>
     )
 }
 
 function CourseDetail({badges,condition,date,score,text,title}:Omit<ICourse,"id"|"image">){
+    const dateFormat:string=new Date(date).toLocaleDateString("en-US",{year:"2-digit",month:"short",day:"2-digit"})
     return(
         <div className="Course_CourseDetail_container">
             <div className="courseDetail_header spaceBetween">
-            <div>
+            <div className="courseDetail_header_info">
             <h3>{title}</h3>
             <p className="lightText">{text}</p>
             </div>
-            <div className="flex">
+            <div className="courseDetail_header_rate flex">
                 <AiFillStar style={{color:"yellow"}} /> <span> {score}</span>
             </div>
             </div>
@@ -45,7 +46,7 @@ function CourseDetail({badges,condition,date,score,text,title}:Omit<ICourse,"id"
                 
             </div>
             <div className="courseDetail_footer spaceBetween">
-                <p className="courseDetail_footer_date lightText">{new Date(date).toLocaleDateString("en-US")}</p>
+                <p className="courseDetail_footer_date lightText">{dateFormat}</p>
                 <span className={`badge 
                 ${condition==="Active"?"badge_success":
                 condition==="Upcoming"?"badge_danger":"badge_info"}`} >
