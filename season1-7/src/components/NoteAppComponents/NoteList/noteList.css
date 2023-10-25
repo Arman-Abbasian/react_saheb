@@ -1,0 +1,11 @@
+.NoteListContainer_status{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.NoteListContainer{
+    flex:3;
+    background-color: rebeccapurple;
+    padding: 0.5rem;
+}
