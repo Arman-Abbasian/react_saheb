@@ -1,30 +1,21 @@
-import { useState } from "react";
-import AddNote, { INote } from "../AddNote/AddNote"
+import AddNote, { INote } from "../AddNote/AddNote";
 import NoteList from "../NoteList/NoteList"
 import "./main.css";
 
-function Main() {
-  const [notes,setNotes]=useState<INote[]>([])
-  const sendDataHandler=(note:INote)=>{
-    setNotes([...notes,note])
-  }
-  const changeCompleted=(id:number)=>{
-    const notesClone=[...notes];
-   const findedNote= notesClone.find(item=>item.id===id)
-   if(findedNote){
-    findedNote.completed=!findedNote.completed;
-    setNotes(notesClone)
-   }
-  }
-  const deleteHandler=(id:number)=>{
-    const notesClone=[...notes];
-    const filteredNotes= notesClone.filter(item=>item.id!==id)
-     setNotes(filteredNotes)
-  }
+interface IProps{
+  sendDataHandler:(note:INote)=>void;
+  changeCompleted:(id:number)=>void;
+  deleteHandler:(id:number)=>void;
+  notes:INote[];
+  filteredNotes:INote[]
+}
+
+function Main({sendDataHandler,notes,changeCompleted,deleteHandler,filteredNotes}:IProps) {
+  
   return (
     <div className="MainContainer">
         <AddNote sendData={sendDataHandler} />
-        <NoteList notes={notes} changeCompleted={changeCompleted} deleteHandler={deleteHandler} />
+        <NoteList filteredNotes={filteredNotes} notes={notes} changeCompleted={changeCompleted} deleteHandler={deleteHandler} />
     </div>
   )
 }

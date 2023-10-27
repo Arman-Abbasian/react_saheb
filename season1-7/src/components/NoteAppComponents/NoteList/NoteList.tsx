@@ -4,11 +4,12 @@ import "./noteList.css";
 
 interface IProps{
   notes:INote[];
+  filteredNotes:INote[];
   changeCompleted:(id:number)=>void;
   deleteHandler:(id:number)=>void
 
 }
-function NoteList({notes,changeCompleted,deleteHandler}:IProps) {
+function NoteList({notes,changeCompleted,deleteHandler,filteredNotes}:IProps) {
   let All=0;
   let Completed=0;
   let Open=0
@@ -35,7 +36,7 @@ function NoteList({notes,changeCompleted,deleteHandler}:IProps) {
         <p>Open {Open}</p>
       </div>
       <div className="NoteListContainer_NoteList">
-       {notes.map((item:INote)=> <Note key={item.id} deleteHandler={()=>deleteHandler(item.id)} changeCompleted={()=>changeCompleted(item.id)} note={item} />)}
+       {filteredNotes.map((item:INote)=> <Note key={item.id} deleteHandler={()=>deleteHandler(item.id)} changeCompleted={()=>changeCompleted(item.id)} note={item} />)}
       </div>
     </div>
   )

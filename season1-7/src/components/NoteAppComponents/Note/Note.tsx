@@ -9,7 +9,7 @@ interface INoteProps{
 }
 
 function Note({note,changeCompleted,deleteHandler}:INoteProps) {
-  //const dateFormat:string=new Date({note.createdAt}).toLocaleDateString("en-US",{year:"2-digit",month:"short",day:"2-digit"});
+  const dateFormat:string=new Date(note.createdAt).toLocaleDateString("en-US",{year:"numeric",month:"short",day:"numeric"});
   return (
     <div  className="NoteContainer">
        <div className="NoteContainer_main">
@@ -22,7 +22,7 @@ function Note({note,changeCompleted,deleteHandler}:INoteProps) {
           <input type="checkbox" checked={note.completed} onChange={changeCompleted} />
         </div>
        </div>
-        <p className="NoteContainer_footer"></p>
+        <p className="NoteContainer_footer">{dateFormat}</p>
     </div>
   )
 }
