@@ -1,9 +1,9 @@
 .AddNoteContainer{
     flex:2;
-    background-color: aquamarine;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 10px;
 }
 .AddNoteContainer_formContainer{
     display: flex;

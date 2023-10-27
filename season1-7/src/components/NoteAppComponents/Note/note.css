@@ -1,7 +1,7 @@
 .NoteContainer{
     padding: 0.5rem;
-    background-color: red;
     border-radius: 10px;
+    background-color: lightblue;
 }
 .NoteContainer_main{
     display: flex;
