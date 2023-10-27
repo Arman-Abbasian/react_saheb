@@ -9,7 +9,7 @@ export interface INote{
   title:string;
   description:string;
   completed:boolean;
-  createdAt:Date
+  createdAt:string
 }
 interface IProps{
   sendData:(note:INote)=>void
@@ -22,7 +22,8 @@ function AddNote({sendData}:IProps) {
   }
   const submitHandler=(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
-    sendData({...formData,id:Date.now(),completed:false,createdAt:new Date()})
+    sendData({...formData,id:Date.now(),completed:false,createdAt:new Date().toISOString()});
+    setFormData({title:"",description:""})
   }
   return (
     <div className="AddNoteContainer">

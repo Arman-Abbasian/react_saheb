@@ -3,12 +3,13 @@ import Note from "../Note/Note";
 import "./noteList.css";
 
 interface IProps{
-  notes:INote[]
+  notes:INote[];
+  changeCompleted:(id:number)=>void;
+  deleteHandler:(id:number)=>void
 
 }
-
 const status:string[]=["All","completed","open"]
-function NoteList({notes}:IProps) {
+function NoteList({notes,changeCompleted,deleteHandler}:IProps) {
   if(notes.length===0) return <div className="NoteListContainer">
     <p style={{textAlign:"center"}}>there is any notes</p>
     </div>
@@ -18,7 +19,7 @@ function NoteList({notes}:IProps) {
         {status.map(item=><p key={item}>{item}</p>)}
       </div>
       <div className="NoteListContainer_NoteList">
-       <Note />
+       {notes.map((item:INote)=> <Note key={item.id} deleteHandler={()=>deleteHandler(item.id)} changeCompleted={()=>changeCompleted(item.id)} note={item} />)}
       </div>
     </div>
   )
