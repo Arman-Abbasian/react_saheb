@@ -4,7 +4,7 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 interface INoteProps{
   note:INote;
-  changeCompleted:()=>void
+  changeCompleted:(e: React.ChangeEvent<HTMLInputElement>)=>void
   deleteHandler:()=>void
 }
 
@@ -19,7 +19,7 @@ function Note({note,changeCompleted,deleteHandler}:INoteProps) {
         </div>
         <div className="NoteContainer_main_icons">
           <AiOutlineDelete onClick={deleteHandler} />
-          <input type="checkbox" checked={note.completed} onChange={changeCompleted} />
+          <input type="checkbox" value={note.id} checked={note.completed} onChange={changeCompleted} />
         </div>
        </div>
         <p className="NoteContainer_footer">{dateFormat}</p>

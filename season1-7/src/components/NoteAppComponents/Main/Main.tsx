@@ -4,7 +4,7 @@ import "./main.css";
 
 interface IProps{
   sendDataHandler:(note:INote)=>void;
-  changeCompleted:(id:number)=>void;
+  changeCompleted:(e: React.ChangeEvent<HTMLInputElement>)=>void;
   deleteHandler:(id:number)=>void;
   notes:INote[];
   filteredNotes:INote[]

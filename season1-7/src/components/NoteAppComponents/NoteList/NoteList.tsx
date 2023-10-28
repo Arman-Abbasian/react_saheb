@@ -5,7 +5,7 @@ import "./noteList.css";
 interface IProps{
   notes:INote[];
   filteredNotes:INote[];
-  changeCompleted:(id:number)=>void;
+  changeCompleted:(e: React.ChangeEvent<HTMLInputElement>)=>void;
   deleteHandler:(id:number)=>void
 
 }
@@ -36,7 +36,7 @@ function NoteList({notes,changeCompleted,deleteHandler,filteredNotes}:IProps) {
         <p>Open {Open}</p>
       </div>
       <div className="NoteListContainer_NoteList">
-       {filteredNotes.map((item:INote)=> <Note key={item.id} deleteHandler={()=>deleteHandler(item.id)} changeCompleted={()=>changeCompleted(item.id)} note={item} />)}
+       {filteredNotes.map((item:INote)=> <Note key={item.id} deleteHandler={()=>deleteHandler(item.id)} changeCompleted={changeCompleted} note={item} />)}
       </div>
     </div>
   )

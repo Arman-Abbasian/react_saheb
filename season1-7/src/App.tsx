@@ -19,15 +19,11 @@ if(selectedOption==="earliest"){
 }else{
   filteredNotes.sort((a,b) => +new Date(b.createdAt)- +new Date(a.createdAt))
 }
-
-
-  const changeCompleted=(id:number)=>{
-    const notesClone=[...notes];
-   const findedNote= notesClone.find(item=>item.id===id)
-   if(findedNote){
-    findedNote.completed=!findedNote.completed;
-    setNotes(notesClone)
-   }
+  const changeCompleted=(e: React.ChangeEvent<HTMLInputElement>)=>{
+    console.log(Number(e.target.value))
+   setNotes(notes.map(item=>(
+    (item.id===Number(e.target.value))?{...item,completed:!item.completed}:item
+   )))
   }
   const deleteHandler=(id:number)=>{
     const notesClone=[...notes];
