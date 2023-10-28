@@ -10,9 +10,9 @@ interface IProps{
 
 }
 function NoteList({notes,changeCompleted,deleteHandler,filteredNotes}:IProps) {
-  let All=0;
-  let Completed=0;
-  let Open=0
+  let All:number=0;
+  let Completed:number=0;
+  let Open:number=0
   if(notes.length>0){
      All=notes.length;
     const CompletedNotes=notes.filter(item=>item.completed===true)
@@ -31,9 +31,9 @@ function NoteList({notes,changeCompleted,deleteHandler,filteredNotes}:IProps) {
   return (
     <div className="NoteListContainer">
       <div className="NoteListContainer_status">
-        <p>All {All}</p>
-        <p>Completed {Completed}</p>
-        <p>Open {Open}</p>
+        <div className="flex"><p>All</p> <span className="circle">{All}</span></div>
+        <div className="flex"><p>Completed</p> <span className="circle">{Completed}</span></div>
+        <div className="flex"><p>Open</p> <span className="circle">{Open}</span></div>
       </div>
       <div className="NoteListContainer_NoteList">
        {filteredNotes.map((item:INote)=> <Note key={item.id} deleteHandler={()=>deleteHandler(item.id)} changeCompleted={changeCompleted} note={item} />)}

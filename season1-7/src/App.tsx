@@ -3,9 +3,10 @@ import { INote } from "./components/NoteAppComponents/AddNote/AddNote";
 import Header from "./components/NoteAppComponents/Header/Header"
 import Main from "./components/NoteAppComponents/Main/Main"
 import {useState} from 'react';
+import { filter } from "./utils/filter";
 
 //! types and interfaces-------------------------
-type TOptions="latest"|"earliest"|"completed"
+export type TOptions="latest"|"earliest"|"completed"
 //this file is a component and is the father of all the component and this component add to the real dom
 function App() {
   //! states-------------------------------------
@@ -29,13 +30,7 @@ function App() {
 
   //! filter section------------------------------------
 let filteredNotes=notes;
-if(selectedOption==="earliest"){
-  filteredNotes.sort((a,b) => +new Date(a.createdAt)- +new Date(b.createdAt))
-}else if(selectedOption==="completed"){
-  filteredNotes=[...notes].sort((a,b) => +(a.completed)- +(b.completed))
-}else{
-  filteredNotes=[...notes].sort((a,b) => +new Date(b.createdAt)- +new Date(a.createdAt))
-}
+filteredNotes=filter(selectedOption,notes,filteredNotes)
 
   return (
     // <div className="App_container">

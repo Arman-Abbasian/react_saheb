@@ -24,6 +24,15 @@ body{
   font-size: smaller;
   color:gainsboro;
 }
+.circle{
+  width:25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /*! badges ---------------------------*/
 .badge{
   padding: 1px 8px ;

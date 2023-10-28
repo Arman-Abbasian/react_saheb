@@ -2,6 +2,7 @@ import AddNote, { INote } from "../AddNote/AddNote";
 import NoteList from "../NoteList/NoteList"
 import "./main.css";
 
+//! types and interfaces-------------------------
 interface IProps{
   sendDataHandler:(note:INote)=>void;
   changeCompleted:(e: React.ChangeEvent<HTMLInputElement>)=>void;
