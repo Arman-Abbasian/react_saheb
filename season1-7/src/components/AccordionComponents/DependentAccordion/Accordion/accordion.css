@@ -1,0 +1,33 @@
+.accordionContainer{
+    background-color: lightgoldenrodyellow;
+    padding: 1rem;
+    transition: all;
+    transition-duration: 0.4s;
+}
+.accordionContainer_header{
+    margin-bottom: 30px;
+}
+.chevronDown{
+    transition: all;
+    transition-duration: 0.4s;
+    transform: rotate(0deg);
+}
+.chevronUp{
+    transform: rotate(180deg);
+    transition: all;
+    transition-duration: 0.4s;
+}
+.margin{
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+.zeroHeight{
+    transition: all;
+    transition-duration: 4s;
+   min-height: 0;
+}
+.maxHeight{
+    transition: all;
+    transition-duration: 0.4s;
+    min-height: max-content;
+}
