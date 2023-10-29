@@ -10,7 +10,11 @@ function AccordionList() {
   //which id is active now
   const [openAccordion,setOpenAccordion]=useState<number|undefined>()
 const changeHandler=(id:number)=>{
-  setOpenAccordion(id)
+  if(id===openAccordion){
+    setOpenAccordion (undefined)
+  } else{
+    setOpenAccordion(id)
+  }
 }
   return (
     <div>

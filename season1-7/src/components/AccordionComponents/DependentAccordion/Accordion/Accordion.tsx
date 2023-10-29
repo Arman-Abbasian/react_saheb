@@ -14,15 +14,10 @@ interface IProps{
 }
 
 function Accordion({accordion,changeOpenAccordion,openAccordion}:IProps) {
-  console.log("reload")
 const [isShow,setIsShow]=useState(false);
       useEffect(()=>{
         if(accordion.id===openAccordion){
-          if(isShow===true){
-            setIsShow(false)
-          }else{
             setIsShow(true)
-          }
       }else{
         setIsShow(false)
       }
