@@ -1,11 +1,16 @@
-import Header from "../Header/Header"
-import Main from "../Main/Main"
+import CharacterDetails from "../CharacterDetails/CharacterDetails"
+import CharacterList from "../CharacterList/CharacterList"
+import Header from "../Header/Header";
+import "./mainPage.css";
 
 function MainPage() {
   return (
-    <div>
+    <div className="MainContainer">
         <Header />
-        <Main />
+        <div className="MainContainer_main">
+          <CharacterList />
+          <CharacterDetails />
+        </div>
     </div>
   )
 }

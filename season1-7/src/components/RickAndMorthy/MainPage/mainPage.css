@@ -1,0 +1,7 @@
+.MainContainer{
+    padding: 1rem;
+}
+.MainContainer_main{
+    display: flex;
+    gap: 1rem;
+}
