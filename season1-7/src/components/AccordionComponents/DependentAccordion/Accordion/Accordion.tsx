@@ -1,6 +1,5 @@
 import { BsChevronDown } from "react-icons/bs";
 import "./accordion.css";
-import { useEffect, useState } from "react";
 
 export interface IAccordion{
   id:number;
@@ -14,23 +13,15 @@ interface IProps{
 }
 
 function Accordion({accordion,changeOpenAccordion,openAccordion}:IProps) {
-const [isShow,setIsShow]=useState(false);
-      useEffect(()=>{
-        if(accordion.id===openAccordion){
-            setIsShow(true)
-      }else{
-        setIsShow(false)
-      }
-      },[openAccordion])
+let isShow:boolean=false;
+if(accordion.id===openAccordion) isShow=true
   return (
-    <div onClick={changeOpenAccordion} className={`accordionContainer ${isShow && "margin"}`}>
-        <div  className="spaceBetween accordionContainer_header">
+    <div className={`accordionContainer ${isShow && "margin"}`}>
+        <div onClick={changeOpenAccordion}  className="spaceBetween accordionContainer_header">
             <h3>{accordion.title}</h3>
             <BsChevronDown className={isShow?"chevronUp":"chevronDown"} />
         </div>
-        {isShow &&
-        <p className={`${isShow ? "maxHeight":"zeroHeight"}`} >{accordion.content}</p>
-      }
+        <p className={`accordionContainer_content ${isShow ? "maxHeight":"zeroHeight"}`} >{accordion.content}</p>
     </div>
   )
 }

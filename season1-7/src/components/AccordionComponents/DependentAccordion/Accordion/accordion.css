@@ -1,11 +1,14 @@
 .accordionContainer{
     background-color: lightgoldenrodyellow;
-    padding: 1rem;
     transition: all;
     transition-duration: 0.4s;
+    border-radius: 0.3rem;
+    overflow: hidden;
 }
 .accordionContainer_header{
-    margin-bottom: 30px;
+    padding:0.5rem ;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 15px;
 }
 .chevronDown{
     transition: all;
@@ -22,12 +25,14 @@
     margin-top: 1rem;
 }
 .zeroHeight{
-    transition: all;
-    transition-duration: 4s;
-   min-height: 0;
+   transition: all 0.2s;
+   max-height: 0;
+   opacity: 0;
+   overflow: hidden;
 }
 .maxHeight{
-    transition: all;
-    transition-duration: 0.4s;
-    min-height: max-content;
+    transition: all 0.4s ;
+    max-height: max-content;
+    opacity: 1;
+    padding: 0.5rem;
 }
