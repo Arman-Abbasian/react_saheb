@@ -1,5 +1,5 @@
 import "./app.css"
-import AccordionList from "./components/AccordionComponents/DependentAccordion/AccordionList";
+import MainPage from "./components/RickAndMorthy/MainPage/MainPage";
 
 // //! types and interfaces-------------------------
 // export type TOptions="latest"|"earliest"|"completed"
@@ -42,8 +42,11 @@ function App() {
     //   <Main filteredNotes={filteredNotes} changeCompleted={changeCompleted} deleteHandler={deleteHandler} 
     //   notes={notes} sendDataHandler={sendDataHandler} />
     // </div>
+    // <div>
+    //   <AccordionList />
+    // </div>
     <div>
-      <AccordionList />
+      <MainPage />
     </div>
   )
 }
