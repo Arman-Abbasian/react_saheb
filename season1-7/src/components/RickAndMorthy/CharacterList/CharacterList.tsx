@@ -5,7 +5,6 @@ function CharacterList() {
     <div className="CharacterListContainer">
       <Character />
       <Character/>
-      <Character/>
     </div>
   )
 }
@@ -24,7 +23,7 @@ export function Character() {
           <img style={{borderRadius:"0.3rem"}} className="imageSet" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="ali" />
         </div>
         <div className="CharacterContainer_main_description">
-          <div style={{marginBottom:"0.5rem"}}>ale javode aldliadsf</div>
+          <p style={{marginBottom:"0.5rem"}}>ale javode aldliadsf</p>
           <div>sfsf- asfsf-afsfs</div>
         </div>
       </div>

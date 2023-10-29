@@ -1,0 +1,8 @@
+.ButtonContainer{
+    background-color: gray;
+    color: white;
+    padding: 0.3rem 0.5rem;
+    display: inline-block;
+    border-radius: 1rem;
+
+}
