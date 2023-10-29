@@ -4,15 +4,17 @@ import "./accordion.css";
 export interface IAccordion{
   id:number;
   title:string;
-  content:string
+  content:string;
+  child:React.ReactNode
 }
 interface IProps{
   accordion:IAccordion;
   openAccordion:number|undefined
   changeOpenAccordion:()=>void
+  children:React.ReactNode
 }
 
-function Accordion({accordion,changeOpenAccordion,openAccordion}:IProps) {
+function Accordion({accordion,changeOpenAccordion,openAccordion,children}:IProps) {
 let isShow:boolean=false;
 if(accordion.id===openAccordion) isShow=true
   return (
@@ -21,7 +23,11 @@ if(accordion.id===openAccordion) isShow=true
             <h3>{accordion.title}</h3>
             <BsChevronDown className={isShow?"chevronUp":"chevronDown"} />
         </div>
-        <p className={`accordionContainer_content ${isShow ? "maxHeight":"zeroHeight"}`} >{accordion.content}</p>
+        <div className={`accordionContainer_content ${isShow ? "maxHeight":"zeroHeight"}`} >
+          <p>
+            {accordion.content}</p>
+            {children}
+            </div>
     </div>
   )
 }
