@@ -1,3 +1,8 @@
+.CharacterDetailContainer{
+    flex:3
+}
+
+
 .CharacterDetailContainer_character{
     background-color: green;
     display:flex;

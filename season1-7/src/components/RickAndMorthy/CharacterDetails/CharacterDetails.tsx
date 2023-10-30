@@ -1,9 +1,15 @@
 import Button from "../Button/Button";
+import { ICharacter } from "../MainPage/MainPage";
 import "./characterDetails.css";
 import { AiOutlineArrowDown } from "react-icons/ai";
-export function CharacterDetails() {
+
+interface IProps{
+  characters:ICharacter[];
+  
+}
+export function CharacterDetails({characters}:IProps) {
   return (
-      <div>
+      <div className="CharacterDetailContainer">
         <CharacterDetailsCharacter/>
         <CharacterDetailsEpisodes/>
       </div>

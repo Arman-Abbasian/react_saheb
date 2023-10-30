@@ -6,7 +6,7 @@
 }
 /*! character component styles--------------- */
 .CharacterContainer{
-    background-color: green;
+    background-color: lightblue;
     padding: 0.5rem;
     border-radius: 0.3rem;
 }
@@ -20,4 +20,11 @@
 }
 .CharacterContainer_main_description{
     flex: 3;
+}
+.characterStatusColor{
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 50%;
+    background-color: red;
 }

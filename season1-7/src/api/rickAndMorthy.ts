@@ -1,4 +1,6 @@
-export const characters=[
+import { ICharacter } from "../components/RickAndMorthy/MainPage/MainPage"
+
+export const characterss:ICharacter[]=[
     {
       id: 1,
       name: "Rick Sanchez",
