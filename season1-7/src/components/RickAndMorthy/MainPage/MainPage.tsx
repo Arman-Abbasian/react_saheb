@@ -39,8 +39,12 @@ function MainPage() {
     <div className="MainContainer">
         <Header favorites={favorites} characters={characters} />
         <div className="MainContainer_main">
-          <CharacterList characters={characters} seeDetail={seeDetail} />
-          <CharacterDetails characters={characters} />
+          <CharacterList characterDetail={characterDetail} characters={characters} seeDetail={seeDetail} />
+          {characterDetail ?
+          <CharacterDetails characters={characters} />:
+          <p style={{flex:3}}>please tap on eye Icon to see the character details</p>
+          }
+          
         </div>
     </div>
   )

@@ -4,12 +4,13 @@ import "./characterList.css"
 
 interface ICharacterListProps{
   characters:ICharacter[];
+  characterDetail: ICharacter;
   seeDetail:(characterDetail:ICharacter)=>void
 }
-function CharacterList({characters,seeDetail}:ICharacterListProps) {
+function CharacterList({characters,seeDetail,characterDetail}:ICharacterListProps) {
   return (
     <div className="CharacterListContainer">
-      {characters.map((character)=><Character seeDetail={seeDetail} character={character} key={character.id} />)}
+      {characters.map((character)=><Character characterDetail={characterDetail} seeDetail={seeDetail} character={character} key={character.id} />)}
     </div>
   )
 }
@@ -19,13 +20,14 @@ export default CharacterList
 
 
 //! Character component-------------------------------------------------------
-import { BiShow } from "react-icons/bi";
+import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 import { FcBusinesswoman,FcBusinessman } from "react-icons/fc";
 interface ICharacterProps{
   character:ICharacter;
+  characterDetail:ICharacter;
   seeDetail:(characterDetail:ICharacter)=>void
 }
-export function Character({character,seeDetail}:ICharacterProps) {
+export function Character({character,seeDetail,characterDetail}:ICharacterProps) {
   return (
     <div className="CharacterContainer spaceBetween">
       <div className="CharacterContainer_main">
@@ -40,7 +42,11 @@ export function Character({character,seeDetail}:ICharacterProps) {
           <div><span style={{backgroundColor:character.status==="Alive" ? "green" : "red"}} className="characterStatusColor"></span> <span>{character.status}</span>-<span>{character.species}</span></div>
         </div>
       </div>
-      <BiShow onClick={()=>seeDetail(character)} className="CharacterContainer_detail"/>
+      {characterDetail && character.id===characterDetail.id ?
+      <HiOutlineEyeOff onClick={()=>seeDetail(character)} className="CharacterContainer_detail"/>
+      :<HiOutlineEye onClick={()=>seeDetail(character)} className="CharacterContainer_detail"/>
+      
+      }
     </div>
   )
 }
