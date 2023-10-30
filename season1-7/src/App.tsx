@@ -45,7 +45,7 @@ function App() {
     // <div>
     //   <AccordionList />
     // </div>
-    <div>
+    <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
       <MainPage />
     </div>
   )

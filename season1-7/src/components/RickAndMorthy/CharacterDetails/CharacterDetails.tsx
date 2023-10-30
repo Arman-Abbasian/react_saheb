@@ -1,47 +1,79 @@
 import Button from "../Button/Button";
-import { ICharacter } from "../MainPage/MainPage";
+import { ICharacter, IEpisode } from "../MainPage/MainPage";
+import NameAndInfos from "../NameAndInfos/NameAndInfos";
 import "./characterDetails.css";
 import { AiOutlineArrowDown } from "react-icons/ai";
+import { episodes } from "../../../api/rickAndMorthy";
 
-interface IProps{
-  characters:ICharacter[];
+interface ICharacterDetailsProps{
+  favorites:ICharacter[];
+  character:ICharacter;
+  episodes: IEpisode[]
   
 }
-export function CharacterDetails({characters}:IProps) {
+export function CharacterDetails({character,favorites}:ICharacterDetailsProps) {
   return (
       <div className="CharacterDetailContainer">
-        <CharacterDetailsCharacter/>
-        <CharacterDetailsEpisodes/>
+        <CharacterDetailsCharacter character={character} favorites={favorites} />
+        <CharacterDetailsEpisodes character={character} episodes={episodes}  />
       </div>
   )
 }
 export default CharacterDetails;
 
 //! CharacterDetailsCharacter component---------------------------------------
-export function CharacterDetailsCharacter() {
+
+interface ICharacterDetailsCharacterProps{
+  character:ICharacter;
+  favorites:ICharacter[]
+}
+
+export function CharacterDetailsCharacter({character,favorites}: ICharacterDetailsCharacterProps) {
+  const isInFavorite:ICharacter|undefined= favorites?.find(item=>item.id===character.id)
   return (
       <div className="CharacterDetailContainer_character">
         <div className="CharacterDetailContainer_character_image">
-          <img  className="imageSet" src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="ali" />
+          <img  className="imageSet" src={character.image} alt={character.name} />
         </div>
         <div className="CharacterDetailContainer_character_description">
         <div>
-          <p >ale javode aldliadsf</p>
-          <p>sfsf- asfsf-afsfs</p>
+        <NameAndInfos character={character} mb="0rem" />
           </div>
           <div>
-            <p className="lightText">gsfsfsfsfwe</p>
-            <p>ssfsfs</p>
-            <Button text="add to favorites" />
+            <p className="lightText">Last known location</p>
+            <p>{character.location.name}</p>
+            {isInFavorite ? <div style={{marginTop:"1rem"}}><Button text="is as favorite" /></div>
+            : <div style={{marginTop:"1rem"}}><Button text="add to favorites" /></div>
+            }
+            
           </div>
         </div>
       </div>
   )
 }
 
-
 //! CharacterDetailsEpisodes component---------------------------------------
-function CharacterDetailsEpisodes(){
+interface ICharacterDetailsEpisodesProps{
+  character:ICharacter;
+  episodes: IEpisode[]
+}
+function CharacterDetailsEpisodes({character,episodes}:ICharacterDetailsEpisodesProps){
+
+  const episodeList:string[]=character.episode.map(item=>{
+    const array=item.split("/");
+    return array[array.length - 1]
+  })
+
+  const characterEpisodeList :IEpisode[] =[] ;
+    if (episodeList.length>0){
+       episodeList.map(item=>{
+        const foundedEpisode=episodes.find((episode:IEpisode)=> episode.id===Number(item))
+        if (foundedEpisode){
+          characterEpisodeList.push(foundedEpisode)
+        }
+      })
+    }
+
   return(
     <div className="CharacterDetailsEpisodesContainer">
       <div className="CharacterDetailsEpisodesContainer_header spaceBetween">
@@ -49,22 +81,24 @@ function CharacterDetailsEpisodes(){
         <span className="circle"><AiOutlineArrowDown/></span>
       </div>
       <div className="CharacterDetailsEpisodesContainer_content">
-        <Episode/>
-        <Episode/>
-        <Episode/>
+       {characterEpisodeList && characterEpisodeList.length>0 && 
+       characterEpisodeList.slice(0,20).map(episode=><Episode key={episode?.id} episode={episode} />)}
       </div>
     </div>
   )
 }
 
+interface IEpisodeProps{
+  episode:IEpisode
+}
 //! Episode component---------------------------------------
-function Episode(){
+function Episode({episode}:IEpisodeProps){
   return(
     <div className="EpisodeContainer spaceBetween">
       <div className="EpisodeContainer_info">
-        <p>sfsf-sfsfsfs -s sfsfsff</p>
+        <p><span>{episode?.id}</span>-<span>{episode?.episode}</span> -<span>{episode?.name}</span></p>
       </div>
-      <div className="EpisodeContainer_date rickBadge">2 jun 2013</div>
+      <div className="EpisodeContainer_date rickBadge">{episode?.air_date}</div>
     </div>
   )
 }
