@@ -50,6 +50,9 @@ function MainPage() {
   const addToFavorite=(character:ICharacter)=>{
     setFavorites([...favorites,character])
   }
+  const removeFreomFavoriteList=(id:number)=>{
+    setFavorites((favorites)=>favorites.filter(item=>item.id!==id)) 
+  }
   const filter=()=>{
     if(searchCharacter){
       const filteredCharacter=[] as ICharacter[]
@@ -64,7 +67,7 @@ function MainPage() {
   const filteredCharacters=filter();
   return (
     <div className="MainContainer">
-      {isShow && <Modal favorites={favorites} closeHandler={()=>setIsShow(false)} />}
+      {isShow && <Modal removeFreomFavoriteList={removeFreomFavoriteList} favorites={favorites} closeHandler={()=>setIsShow(false)} />}
         <Header setIsShow={()=>setIsShow(true)} favorites={favorites} characters={filteredCharacters} 
         searchCharacter={searchCharacter} 
         setSearchCharacter={(e)=>setSearchCharacter(e.target.value)} />

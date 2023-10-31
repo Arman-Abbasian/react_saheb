@@ -1,6 +1,8 @@
 .CharacterDetailContainer{
-    flex:3
+    flex:3;
 }
+
+
 
 
 .CharacterDetailContainer_character{
@@ -27,7 +29,16 @@
     flex-direction: column;
     gap: 0.3rem;
     border-radius: 0.3rem;
+    max-height: 20rem;
+    overflow: auto;
 }
+.CharacterDetailsEpisodesContainer::-webkit-scrollbar {
+    display: none;
+  }
+  .CharacterDetailsEpisodesContainer::-webkit-scrollbar{
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
+  }
 .CharacterDetailsEpisodesContainer_header{
     margin-bottom: 10px;
 }

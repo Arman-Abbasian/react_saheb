@@ -7,10 +7,11 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 interface IProps{
   favorites:ICharacter[],
-  closeHandler:()=>void
+  closeHandler:()=>void,
+  removeFreomFavoriteList:(id:number)=>void
 }
 
-function Modal({favorites,closeHandler}:IProps) {
+function Modal({favorites,closeHandler,removeFreomFavoriteList}:IProps) {
   return (
       <div className={`modalContainer ${!open && 'closeModal' }`}>
         <div className='modalContent'>
@@ -22,7 +23,7 @@ function Modal({favorites,closeHandler}:IProps) {
             </div>
             <div className="flexColumn favoriteList" style={{marginTop:"10px"}}>
                 {favorites.map((item:ICharacter)=><Character character={item}>
-                    <AiOutlineDelete style={{color:"red"}} className="CharacterContainer_detail icon" />
+                    <AiOutlineDelete style={{color:"red"}} onClick={()=>removeFreomFavoriteList(item.id)} className="CharacterContainer_detail icon" />
                 </Character>)}
             </div>
         </div>

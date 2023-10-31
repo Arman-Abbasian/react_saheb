@@ -45,7 +45,7 @@ export function CharacterDetailsCharacter({character,favorites,addToFavorite}: I
             <p className="lightText">Last known location</p>
             <p>{character.location.name}</p>
             {isInFavorite ? <div style={{marginTop:"1rem"}}><Button text="is as favorite" /></div>
-            : <div style={{marginTop:"1rem"}}><Button onClick={()=>addToFavorite(character)}  text="add to favorites" /></div>
+            : <div style={{marginTop:"1rem",cursor:"pointer"}}><Button onClick={()=>addToFavorite(character)}  text="add to favorites" /></div>
             }
             
           </div>

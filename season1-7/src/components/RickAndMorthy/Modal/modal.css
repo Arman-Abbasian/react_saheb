@@ -29,5 +29,12 @@
   }
   .favoriteList{
     max-height: 40rem;
-    overflow-y: scroll;
+    overflow-y: auto;
+  }
+  .favoriteList::-webkit-scrollbar {
+    display: none;
+  }
+  .favoriteList::-webkit-scrollbar{
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
   }
