@@ -9,7 +9,7 @@ interface ICharacterDetailsProps{
   favorites:ICharacter[];
   character:ICharacter;
   episodes: IEpisode[];
-  addToFavorite:()=>void
+  addToFavorite:(character:ICharacter)=>void
   
 }
 export function CharacterDetails({character,favorites,addToFavorite}:ICharacterDetailsProps) {

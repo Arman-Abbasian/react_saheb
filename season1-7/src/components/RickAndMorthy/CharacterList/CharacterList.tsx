@@ -4,7 +4,7 @@ import "./characterList.css"
 
 
 interface ICharacterListProps{
-  characters:ICharacter[];
+  characters:(ICharacter)[];
   characterDetail: ICharacter|undefined;
   seeDetail:(characterDetail:ICharacter)=>void
 }

@@ -34,9 +34,9 @@ interface Origin {
   url: string;
 }
 function MainPage() {
-  const [characters,setCharacters]=useState<ICharacter[]>(characterss);
   const [favorites,setFavorites]=useState<ICharacter[]>([]);
   const [characterDetail,setCharacterDetail]=useState<ICharacter|undefined>();
+  const [searchCharacter,setSearchCharacter]=useState<string>("");
 
   const seeDetail=(character:ICharacter)=>{
     if(character.id===characterDetail?.id){
@@ -48,12 +48,26 @@ function MainPage() {
   const addToFavorite=(character:ICharacter)=>{
     setFavorites([...favorites,character])
   }
+  const filter=()=>{
+    if(searchCharacter){
+      const filteredCharacter=[] as ICharacter[]
+     characterss.map((character)=>{
+        if(character.name.toLocaleLowerCase().includes(searchCharacter.toLocaleLowerCase())) filteredCharacter.push(character)
+      })
+      return filteredCharacter
+    }else{
+      return characterss
+    }
+  }
+  const filteredCharacters=filter();
   return (
     <div className="MainContainer">
-        <Header favorites={favorites} characters={characters} />
+        <Header favorites={favorites} characters={filteredCharacters} 
+        searchCharacter={searchCharacter} 
+        setSearchCharacter={(e)=>setSearchCharacter(e.target.value)} />
         <div className="MainContainer_main">
           <CharacterList characterDetail={characterDetail} 
-          characters={characters} seeDetail={seeDetail} />
+          characters={filteredCharacters} seeDetail={seeDetail} />
           {characterDetail ?
           <CharacterDetails addToFavorite={addToFavorite} episodes={episodes} favorites={favorites} character={characterDetail} />:
           <p style={{flex:3}}>please tap on eye Icon to see the character details</p>
