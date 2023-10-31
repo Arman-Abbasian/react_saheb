@@ -1,12 +1,13 @@
 import "./button.css";
 
 interface IProps{
-    text:string
+    text:string;
+    onClick?:()=>void
 }
 
-function Button({text}:IProps) {
+function Button({text,onClick}:IProps) {
   return (
-    <div className="ButtonContainer">{text}</div>
+    <div onClick={onClick} className="ButtonContainer">{text}</div>
   )
 }
 export default Button

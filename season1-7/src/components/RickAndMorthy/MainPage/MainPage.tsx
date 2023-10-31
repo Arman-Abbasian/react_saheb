@@ -45,6 +45,9 @@ function MainPage() {
     setCharacterDetail(character)
   }
   }
+  const addToFavorite=(character:ICharacter)=>{
+    setFavorites([...favorites,character])
+  }
   return (
     <div className="MainContainer">
         <Header favorites={favorites} characters={characters} />
@@ -52,10 +55,9 @@ function MainPage() {
           <CharacterList characterDetail={characterDetail} 
           characters={characters} seeDetail={seeDetail} />
           {characterDetail ?
-          <CharacterDetails episodes={episodes} favorites={favorites} character={characterDetail} />:
+          <CharacterDetails addToFavorite={addToFavorite} episodes={episodes} favorites={favorites} character={characterDetail} />:
           <p style={{flex:3}}>please tap on eye Icon to see the character details</p>
           }
-          
         </div>
     </div>
   )

@@ -8,13 +8,14 @@ import { episodes } from "../../../api/rickAndMorthy";
 interface ICharacterDetailsProps{
   favorites:ICharacter[];
   character:ICharacter;
-  episodes: IEpisode[]
+  episodes: IEpisode[];
+  addToFavorite:()=>void
   
 }
-export function CharacterDetails({character,favorites}:ICharacterDetailsProps) {
+export function CharacterDetails({character,favorites,addToFavorite}:ICharacterDetailsProps) {
   return (
       <div className="CharacterDetailContainer">
-        <CharacterDetailsCharacter character={character} favorites={favorites} />
+        <CharacterDetailsCharacter addToFavorite={addToFavorite} character={character} favorites={favorites} />
         <CharacterDetailsEpisodes character={character} episodes={episodes}  />
       </div>
   )
@@ -25,10 +26,11 @@ export default CharacterDetails;
 
 interface ICharacterDetailsCharacterProps{
   character:ICharacter;
-  favorites:ICharacter[]
+  favorites:ICharacter[];
+  addToFavorite:(character:ICharacter)=>void
 }
 
-export function CharacterDetailsCharacter({character,favorites}: ICharacterDetailsCharacterProps) {
+export function CharacterDetailsCharacter({character,favorites,addToFavorite}: ICharacterDetailsCharacterProps) {
   const isInFavorite:ICharacter|undefined= favorites?.find(item=>item.id===character.id)
   return (
       <div className="CharacterDetailContainer_character">
@@ -43,7 +45,7 @@ export function CharacterDetailsCharacter({character,favorites}: ICharacterDetai
             <p className="lightText">Last known location</p>
             <p>{character.location.name}</p>
             {isInFavorite ? <div style={{marginTop:"1rem"}}><Button text="is as favorite" /></div>
-            : <div style={{marginTop:"1rem"}}><Button text="add to favorites" /></div>
+            : <div style={{marginTop:"1rem"}}><Button onClick={()=>addToFavorite(character)}  text="add to favorites" /></div>
             }
             
           </div>
