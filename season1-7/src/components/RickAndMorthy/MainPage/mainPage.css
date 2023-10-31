@@ -7,6 +7,6 @@
 }
 @media only screen and (min-width: 787px) {
     .MainContainer{
-        max-width: 80%;
+        width: 70%;
     }
 }

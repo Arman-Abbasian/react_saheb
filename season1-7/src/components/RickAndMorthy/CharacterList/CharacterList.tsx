@@ -11,7 +11,13 @@ interface ICharacterListProps{
 function CharacterList({characters,seeDetail,characterDetail}:ICharacterListProps) {
   return (
     <div className="CharacterListContainer">
-      {characters.map((character)=><Character characterDetail={characterDetail} seeDetail={seeDetail} character={character} key={character.id} />)}
+      {characters.map((character)=><Character  character={character} key={character.id}>
+      {
+      characterDetail && character.id===characterDetail.id 
+      ?<HiOutlineEyeOff onClick={()=>seeDetail(character)} className="CharacterContainer_detail"/>
+      :<HiOutlineEye onClick={()=>seeDetail(character)} className="CharacterContainer_detail"/>
+      }
+      </Character>)}
     </div>
   )
 }
@@ -25,10 +31,9 @@ import { HiOutlineEye, HiOutlineEyeOff } from "react-icons/hi";
 
 interface ICharacterProps{
   character:ICharacter;
-  characterDetail:ICharacter|undefined;
-  seeDetail:(characterDetail:ICharacter)=>void
+  children:React.ReactNode
 }
-export function Character({character,seeDetail,characterDetail}:ICharacterProps) {
+export function Character({character,children}:ICharacterProps) {
   return (
     <div className="CharacterContainer spaceBetween">
       <div className="CharacterContainer_main">
@@ -37,11 +42,7 @@ export function Character({character,seeDetail,characterDetail}:ICharacterProps)
         </div>
         <NameAndInfos character={character} mb="0.5rem" />
       </div>
-      {characterDetail && character.id===characterDetail.id ?
-      <HiOutlineEyeOff onClick={()=>seeDetail(character)} className="CharacterContainer_detail"/>
-      :<HiOutlineEye onClick={()=>seeDetail(character)} className="CharacterContainer_detail"/>
-      
-      }
+      {children}
     </div>
   )
 }

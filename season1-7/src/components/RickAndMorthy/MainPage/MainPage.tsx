@@ -4,6 +4,7 @@ import Header from "../Header/Header";
 import "./mainPage.css";
 import {useState} from 'react';
 import {characterss, episodes} from "../../../api/rickAndMorthy"
+import Modal from "../Modal/Modal";
 
 export interface ICharacter {
   id: number;
@@ -37,6 +38,7 @@ function MainPage() {
   const [favorites,setFavorites]=useState<ICharacter[]>([]);
   const [characterDetail,setCharacterDetail]=useState<ICharacter|undefined>();
   const [searchCharacter,setSearchCharacter]=useState<string>("");
+  const [isShow,setIsShow]=useState<boolean>(false)
 
   const seeDetail=(character:ICharacter)=>{
     if(character.id===characterDetail?.id){
@@ -62,14 +64,16 @@ function MainPage() {
   const filteredCharacters=filter();
   return (
     <div className="MainContainer">
-        <Header favorites={favorites} characters={filteredCharacters} 
+      {isShow && <Modal favorites={favorites} closeHandler={()=>setIsShow(false)} />}
+        <Header setIsShow={()=>setIsShow(true)} favorites={favorites} characters={filteredCharacters} 
         searchCharacter={searchCharacter} 
         setSearchCharacter={(e)=>setSearchCharacter(e.target.value)} />
         <div className="MainContainer_main">
           <CharacterList characterDetail={characterDetail} 
           characters={filteredCharacters} seeDetail={seeDetail} />
           {characterDetail ?
-          <CharacterDetails addToFavorite={addToFavorite} episodes={episodes} favorites={favorites} character={characterDetail} />:
+          <CharacterDetails addToFavorite={addToFavorite} 
+          episodes={episodes} favorites={favorites} character={characterDetail} />:
           <p style={{flex:3}}>please tap on eye Icon to see the character details</p>
           }
         </div>

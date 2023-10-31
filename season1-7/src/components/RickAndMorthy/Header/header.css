@@ -42,3 +42,10 @@ input[type="text"]:focus{
     top:-1px;
     right: -4px;
 }
+.HeartIcon{
+    color:red; 
+    width:1.5rem;
+    height:1.5rem;
+    object-fit:contain;
+    cursor:pointer;
+}
