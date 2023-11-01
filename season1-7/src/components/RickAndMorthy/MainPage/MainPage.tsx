@@ -35,7 +35,14 @@ interface Origin {
   url: string;
 }
 function MainPage() {
-  const [favorites,setFavorites]=useState<ICharacter[]>([]);
+  const favoriteState =()=> {
+    if(localStorage.getItem("favorites"))  {
+      const favorites:ICharacter[] =JSON.parse(localStorage.getItem("favorites"));
+      return favorites
+    }
+    return []
+  }
+  const [favorites,setFavorites]=useState<ICharacter[]>(favoriteState());
   const [characterDetail,setCharacterDetail]=useState<ICharacter|undefined>();
   const [searchCharacter,setSearchCharacter]=useState<string>("");
   const [isShow,setIsShow]=useState<boolean>(false)
@@ -53,6 +60,7 @@ function MainPage() {
   const removeFreomFavoriteList=(id:number)=>{
     setFavorites((favorites)=>favorites.filter(item=>item.id!==id)) 
   }
+  localStorage.setItem("favorites",JSON.stringify(favorites))
   const filter=()=>{
     if(searchCharacter){
       const filteredCharacter=[] as ICharacter[]

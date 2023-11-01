@@ -14,7 +14,7 @@ function Header({favorites,characters,searchCharacter,setSearchCharacter,setIsSh
   
 
   return (
-    <div className="HeaderContainer">
+    <nav className="HeaderContainer">
       <div className="HeaderContainer_img flexCenter">
         <img className="imageSet" src="/images/logos/rickAndMothyLogo.png" alt="logo" />
       </div>
@@ -30,7 +30,7 @@ function Header({favorites,characters,searchCharacter,setSearchCharacter,setIsSh
       <span className="HeaderContainer_favorites_number flexCenter">{favorites.length}</span>
       </span>
       </div>
-    </div>
+    </nav>
   )
 }
 
