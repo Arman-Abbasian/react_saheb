@@ -75,7 +75,8 @@ function MainPage() {
   const filteredCharacters=filter();
   return (
     <div className="MainContainer">
-      {isShow && <Modal removeFreomFavoriteList={removeFreomFavoriteList} favorites={favorites} closeHandler={()=>setIsShow(false)} />}
+      {isShow && <Modal removeFreomFavoriteList={removeFreomFavoriteList} 
+      favorites={favorites} closeHandler={()=>setIsShow(false)} />}
         <Header setIsShow={()=>setIsShow(true)} favorites={favorites} characters={filteredCharacters} 
         searchCharacter={searchCharacter} 
         setSearchCharacter={(e)=>setSearchCharacter(e.target.value)} />

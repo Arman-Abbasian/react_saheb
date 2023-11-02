@@ -2,9 +2,6 @@
     flex:3;
 }
 
-
-
-
 .CharacterDetailContainer_character{
     background-color: lightblue;
     display:flex;
@@ -46,6 +43,14 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+.rotateArrowSortEarliest{
+    rotate: 180deg;
+    transition: all 0.3s ease-in-out;
+}
+.rotateArrowSortLatest{
+    rotate: 0deg;
+    transition: all 0.3s ease-in-out;
 }
 
 /* ! Episode component--------------------------------------- */

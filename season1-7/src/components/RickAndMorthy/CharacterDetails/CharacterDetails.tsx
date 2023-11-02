@@ -1,8 +1,9 @@
+import {memo} from 'react'
 import Button from "../Button/Button";
 import { ICharacter, IEpisode } from "../MainPage/MainPage";
 import NameAndInfos from "../NameAndInfos/NameAndInfos";
 import "./characterDetails.css";
-import { AiOutlineArrowDown } from "react-icons/ai";
+import { AiOutlineArrowUp } from "react-icons/ai";
 import { episodes } from "../../../api/rickAndMorthy";
 
 interface ICharacterDetailsProps{
@@ -12,14 +13,14 @@ interface ICharacterDetailsProps{
   addToFavorite:(character:ICharacter)=>void
   
 }
-export function CharacterDetails({character,favorites,addToFavorite}:ICharacterDetailsProps) {
+const CharacterDetails=memo(function CharacterDetails({character,favorites,addToFavorite}:ICharacterDetailsProps) {
   return (
       <div className="CharacterDetailContainer">
         <CharacterDetailsCharacter addToFavorite={addToFavorite} character={character} favorites={favorites} />
         <CharacterDetailsEpisodes character={character} episodes={episodes}  />
       </div>
   )
-}
+})
 export default CharacterDetails;
 
 //! CharacterDetailsCharacter component---------------------------------------
@@ -59,8 +60,9 @@ interface ICharacterDetailsEpisodesProps{
   character:ICharacter;
   episodes: IEpisode[]
 }
+import {useState} from "react";
 function CharacterDetailsEpisodes({character,episodes}:ICharacterDetailsEpisodesProps){
-
+const [isLatest,setIsLatest]=useState<boolean>(true)
   const episodeList:string[]=character.episode.map(item=>{
     const array=item.split("/");
     return array[array.length - 1]
@@ -75,30 +77,40 @@ function CharacterDetailsEpisodes({character,episodes}:ICharacterDetailsEpisodes
         }
       })
     }
-
+    const sortCharacterEpisodeListFunction=():IEpisode[]=>{
+      if(characterEpisodeList.length>0)
+      {
+        if(isLatest) return characterEpisodeList.sort((a,b)=>+new Date(b.air_date)-+new Date(a.air_date))
+        return characterEpisodeList.sort((a,b)=>+new Date(a.air_date)-+new Date(b.air_date))
+      }else{
+        return [] as IEpisode[]
+      }
+    }
+    const sortCharacterEpisodeList=sortCharacterEpisodeListFunction();
   return(
     <div className="CharacterDetailsEpisodesContainer">
       <div className="CharacterDetailsEpisodesContainer_header spaceBetween">
         <h2>Episodes</h2>
-        <span className="circle"><AiOutlineArrowDown/></span>
+        <span onClick={()=>setIsLatest((is)=>!is)} className={`circle ${isLatest ?"rotateArrowSortLatest":"rotateArrowSortEarliest"}`}><AiOutlineArrowUp/></span>
       </div>
       <div className="CharacterDetailsEpisodesContainer_content">
-       {characterEpisodeList && characterEpisodeList.length>0 && 
-       characterEpisodeList.slice(0,20).map(episode=><Episode key={episode?.id} episode={episode} />)}
+       {sortCharacterEpisodeList && sortCharacterEpisodeList.length>0 && 
+       sortCharacterEpisodeList.slice(0,20).map((episode,index)=><Episode list={String(index+1).padStart(2,"0")} key={episode?.id} episode={episode}/>)}
       </div>
     </div>
   )
 }
 
 interface IEpisodeProps{
-  episode:IEpisode
+  episode:IEpisode;
+  list:string
 }
 //! Episode component---------------------------------------
-function Episode({episode}:IEpisodeProps){
+function Episode({episode,list}:IEpisodeProps){
   return(
     <div className="EpisodeContainer spaceBetween">
       <div className="EpisodeContainer_info">
-        <p><span>{episode?.id}</span>-<span>{episode?.episode}</span> -<span>{episode?.name}</span></p>
+        <p><span>{list}</span>-<span>{episode?.episode}</span> :<strong>{episode?.name}</strong></p>
       </div>
       <div className="EpisodeContainer_date rickBadge">{episode?.air_date}</div>
     </div>

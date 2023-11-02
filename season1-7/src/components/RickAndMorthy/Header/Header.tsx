@@ -1,6 +1,7 @@
 import "./header.css";
 import { AiOutlineHeart } from "react-icons/ai";
 import {ICharacter} from "../MainPage/MainPage"
+import { memo } from "react";
 
 interface IProps{
   favorites:ICharacter[];
@@ -10,7 +11,7 @@ interface IProps{
   setIsShow:React.Dispatch<React.SetStateAction<boolean>>
 
 }
-function Header({favorites,characters,searchCharacter,setSearchCharacter,setIsShow}:IProps) {
+const Header=memo(function Header({favorites,characters,searchCharacter,setSearchCharacter,setIsShow}:IProps) {
   
 
   return (
@@ -32,6 +33,6 @@ function Header({favorites,characters,searchCharacter,setSearchCharacter,setIsSh
       </div>
     </nav>
   )
-}
+})
 
 export default Header
