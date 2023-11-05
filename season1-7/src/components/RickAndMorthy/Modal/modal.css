@@ -20,6 +20,7 @@
     align-items:center;
     background-color: #fff;
     max-height: 30rem;
+    background-color: var(--background-color);
   }
   .closeButtonSection{
     padding: 1rem 0;

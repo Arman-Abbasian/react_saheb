@@ -5,8 +5,8 @@
     display: flex;
     gap: 1rem;
 }
-@media only screen and (min-width: 787px) {
+@media only screen and (min-width: 1080px) {
     .MainContainer{
-        width: 70%;
+        width: 80%;
     }
 }
