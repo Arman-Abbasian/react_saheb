@@ -7,6 +7,7 @@
     align-items: center;
     gap: 10px;
     border-radius: 0.3rem;
+    background-color: var(--primary-color);
 }
 .HeaderContainer_img{
 flex: 1;
@@ -18,12 +19,13 @@ flex: 1;
 input[type="text"]{
     background-color: transparent;
     outline: none;
-    border: 1px solid blueviolet;
+    border: 1px solid var(--secondary-color);
     border-radius: 0.3rem;
     width: 100%;
+    color: var(--text-color);
 }
 input[type="text"]:focus{
-    border: 2px solid blueviolet;
+    border: 2px solid var(--secondary-color);
 }
 .HeaderContainer_result{
     flex:2

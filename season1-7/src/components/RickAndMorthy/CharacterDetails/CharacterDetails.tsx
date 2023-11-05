@@ -38,14 +38,14 @@ export function CharacterDetailsCharacter({character,favorites,addToFavorite}: I
         <div className="CharacterDetailContainer_character_image">
           <img  className="imageSet" src={character.image} alt={character.name} />
         </div>
-        <div className="CharacterDetailContainer_character_description">
+        <div className="CharacterDetailContainer_character_description flexColumn">
         <div>
         <NameAndInfos character={character} mb="0rem" />
           </div>
           <div>
             <p className="lightText">Last known location</p>
             <p>{character.location.name}</p>
-            {isInFavorite ? <div style={{marginTop:"1rem"}}><Button text="is as favorite" /></div>
+            {isInFavorite ? <div style={{marginTop:"1rem"}}><Button text="Is already in Favorite list" /></div>
             : <div style={{marginTop:"1rem",cursor:"pointer"}}><Button onClick={()=>addToFavorite(character)}  text="add to favorites" /></div>
             }
             
@@ -91,7 +91,7 @@ const [isLatest,setIsLatest]=useState<boolean>(true)
     <div className="CharacterDetailsEpisodesContainer">
       <div className="CharacterDetailsEpisodesContainer_header spaceBetween">
         <h2>Episodes</h2>
-        <span onClick={()=>setIsLatest((is)=>!is)} className={`circle ${isLatest ?"rotateArrowSortLatest":"rotateArrowSortEarliest"}`}><AiOutlineArrowUp/></span>
+        <span style={{backgroundColor:"var(--secondary-color)",cursor:"pointer"}} onClick={()=>setIsLatest((is)=>!is)} className={`circle ${isLatest ?"rotateArrowSortLatest":"rotateArrowSortEarliest"}`}><AiOutlineArrowUp /></span>
       </div>
       <div className="CharacterDetailsEpisodesContainer_content">
        {sortCharacterEpisodeList && sortCharacterEpisodeList.length>0 && 

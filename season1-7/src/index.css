@@ -1,3 +1,9 @@
+html {
+  --background-color: #191A19;
+  --text-color: #D8E9A8;
+  --primary-color: #1E5128;
+  --secondary-color: #4E9F3D;
+}
 * {
   margin: 0;
   padding:0;
@@ -5,6 +11,8 @@
 }
 body{
   padding:1rem;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 .spaceBetween{
   display: flex;

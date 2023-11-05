@@ -3,7 +3,7 @@
 }
 
 .CharacterDetailContainer_character{
-    background-color: lightblue;
+    background-color: var(--primary-color);
     display:flex;
     gap:0.3rem;
     margin-bottom: 1rem;
@@ -20,7 +20,7 @@
 
 /* ! CharacterDetailsEpisodes component--------------------------------------- */
 .CharacterDetailsEpisodesContainer{
-    background-color: yellow;
+    background-color:var(--primary-color);
     padding: 0.3rem;
     display: flex;
     flex-direction: column;
@@ -57,5 +57,5 @@
 .rickBadge{
     padding: 0.1rem 1rem;
     border-radius: 30rem;
-    background: gray;
+    background: var(--secondary-color);
 }

@@ -1,5 +1,5 @@
 .ButtonContainer{
-    background-color: gray;
+    background-color:var(--secondary-color);
     color: white;
     padding: 0.3rem 0.5rem;
     display: inline-block;
