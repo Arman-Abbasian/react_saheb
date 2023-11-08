@@ -13,7 +13,8 @@ interface IProps{
 
 function Modal({favorites,closeHandler,removeFreomFavoriteList}:IProps) {
   return (
-      <div className={`modalContainer ${!open && 'closeModal' }`}>
+    <div className="modalContainer">
+      <div className={`modalContainer__background ${!open && 'closeModal' }`} onClick={closeHandler}></div>
         <div className='modalContent'>
             <div className='closeButtonSection'>
             <AiOutlineCloseCircle

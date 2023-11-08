@@ -6,6 +6,7 @@
     max-height: 30rem;
     overflow: auto;
 }
+
 .CharacterListContainer::-webkit-scrollbar {
     display: none;
   }
@@ -40,4 +41,10 @@
 }
 .CharacterContainer_detail{
     cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+    .CharacterListContainer{
+        max-height: 20rem;
+    }
 }

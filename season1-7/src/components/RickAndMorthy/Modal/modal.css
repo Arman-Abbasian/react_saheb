@@ -1,13 +1,21 @@
 .modalContainer{
+  position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:rgba(100, 100, 100, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modalContainer__background{
     position: fixed;
     top:0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color:rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color:rgba(100, 100, 100, 0.5);
   }
   .modalContent{
     width: 80%;
@@ -21,6 +29,7 @@
     background-color: #fff;
     max-height: 30rem;
     background-color: var(--background-color);
+    z-index: 30;
   }
   .closeButtonSection{
     padding: 1rem 0;
